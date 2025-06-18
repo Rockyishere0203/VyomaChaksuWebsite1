@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vyoma Chaksu</title>
+    <!-- Google Fonts for Elegance -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Montserrat', sans-serif;
+            background: url('assets/cosmic-eye-bg.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #fff;
+            text-align: center;
+            overflow-x: hidden;
+        }
+
+        /* Header Styling */
+        .header {
+            padding: 20px;
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5));
+            border-radius: 20px;
+            margin: 10px 0;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 3em;
+            font-family: 'Cinzel', serif;
+            color: #ffd700;
+        }
+        .vision {
+            font-size: 1.8em;
+            font-style: italic;
+            text-shadow: 0 0 5px #ffd700;
+            padding: 15px;
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4));
+            border-radius: 20px;
+            margin: 10px 0;
+        }
+
+        /* General Section Styling */
+        .section {
+            padding: 40px;
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4));
+            margin: 10px 0;
+            border-radius: 20px;
+        }
+        .section h2 {
+            font-size: 2.5em;
+            font-family: 'Cinzel', serif;
+            border-bottom: 2px solid #ffd700;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+        }
+
+        /* Packages Section */
+        .packages {
+            display: flex;
+            overflow-x: auto;
+            gap: 20px;
+            padding: 20px;
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.3));
+            border-radius: 20px;
+            margin: 10px 0;
+        }
+        .package {
+            min-width: 250px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s ease;
+        }
+        .package:hover {
+            transform: scale(1.05);
+        }
+
+        /* Chatbot Styling */
+        .chatbot {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 300px;
+            height: 400px;
+            background: linear-gradient(to bottom, rgba(30, 58, 138, 0.8), rgba(30, 58, 138, 0.6));
+            border-radius: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            display: none;
+            flex-direction: column;
+        }
+        .chatbot.active {
+            display: flex;
+        }
+        .chatbot-close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+            font-size: 1.5em;
+            color: #fff;
+        }
+        .chatbot-messages {
+            flex-grow: 1;
+            overflow-y: auto;
+            padding: 10px;
+        }
+        .chatbot-input {
+            padding: 10px;
+            display: flex;
+            gap: 10px;
+        }
+        .chatbot-reopen {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #ffd700;
+            color: #000;
+            padding: 10px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: none;
+            font-size: 1.5em;
+        }
+
+        /* Menu and Contact Form */
+        .menu-btn {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            font-size: 1.5em;
+            cursor: pointer;
+            background: #ffd700;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .contact-form {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: linear-gradient(to bottom, rgba(30, 58, 138, 0.8), rgba(30, 58, 138, 0.6));
+            padding: 20px;
+            border-radius: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+        .contact-form.active {
+            display: block;
+        }
+        .contact-close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+            font-size: 1.5em;
+            color: #fff;
+        }
+
+        /* Training Section */
+        .training {
+            padding: 20px;
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4));
+            border-radius: 20px;
+            margin: 10px 0;
+        }
+        .contact-info {
+            font-size: 1.2em;
+            margin-top: 20px;
+            text-shadow: 0 0 5px #ffd700;
+        }
+
+        /* Golden Stars Animation */
+        .stars-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1000;
+        }
+        .star {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: #ffd700;
+            border-radius: 50%;
+            animation: fall 20s linear;
+        }
+        @keyframes fall {
+            0% { transform: translateY(-100vh); opacity: 1; }
+            100% { transform: translateY(100vh); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <div class="header">
+        <h1>Vyoma Chaksu</h1>
+        <div class="vision">"Astrology should illuminate, not intimidate—empower, not exploit. When we practice with integrity, we become vessels for cosmic wisdom that truly serves."</div>
+    </div>
+
+    <!-- Mission Section -->
+    <div class="section">
+        <h2>Our Mission</h2>
+        <p>To guide individuals in discovering their soul's purpose through the ancient wisdom of Vedic astrology, providing clarity and empowerment for a fulfilling life journey.</p>
+    </div>
+
+    <!-- Philosophy Section -->
+    <div class="section">
+        <h2>Core Philosophy</h2>
+        <p>We believe astrology is a sacred tool to illuminate your path, not to instill fear. With integrity, we channel cosmic wisdom to serve and uplift every seeker.</p>
+    </div>
+
+    <!-- Packages Section -->
+    <div class="section packages">
+        <div class="package">
+            <h3>Soul Purpose Discovery Session</h3>
+            <p><strong>Duration:</strong> 1 hour</p>
+            <p><strong>Price:</strong> ₹1600</p>
+            <p><strong>What It Offers:</strong> Dive into your cosmic blueprint to uncover your soul’s purpose. This session helps you align your life with your deeper calling, offering clarity on who you are and why you’re here.</p>
+        </div>
+        <div class="package">
+            <h3>Cosmic Clarity Query</h3>
+            <p><strong>Duration:</strong> 30 minutes</p>
+            <p><strong>Price:</strong> ₹900</p>
+            <p><strong>What It Offers:</strong> Ask one specific question—about love, career, or anything else—and receive an in-depth, actionable analysis. Get clear answers without fluff or fear tactics.</p>
+        </div>
+        <div class="package">
+            <h3>Empowerment Guidance Session</h3>
+            <p><strong>Duration:</strong> 2 hours</p>
+            <p><strong>Price:</strong> ₹3000</p>
+            <p><strong>What It Offers:</strong> Clear all your doubts with detailed answers and practical guidance on how to approach challenges. Walk away with the tools to make empowered decisions.</p>
+        </div>
+        <div class="package">
+            <h3>Life Path Illumination Report</h3>
+            <p><strong>Duration:</strong> Full report within 24 hours</p>
+            <p><strong>Price:</strong> ₹6000</p>
+            <p><strong>What It Offers:</strong> A comprehensive Vedic analysis of your birth chart plus next 5-year predictions.</p>
+        </div>
+    </div>
+
+    <!-- Chatbot -->
+    <div class="chatbot" id="chatbot">
+        <div class="chatbot-close" onclick="closeChatbot()">X</div>
+        <div class="chatbot-messages" id="chatbot-messages"></div>
+        <div class="chatbot-input">
+            <input type="text" id="chatbot-input" placeholder="Type your query...">
+            <button onclick="sendMessage()">Send</button>
+        </div>
+    </div>
+    <div class="chatbot-reopen" id="chatbot-reopen" onclick="toggleChatbot()"><i class="fas fa-comment"></i></div>
+
+    <!-- Menu Button and Contact Form -->
+    <div class="menu-btn" onclick="toggleMenu()">☰</div>
+    <div class="contact-form" id="contact-form">
+        <div class="contact-close" onclick="closeContact()"><i class="fas fa-times"></i></div>
+        <h3>Contact Us</h3>
+        <input type="text" id="contact-query" placeholder="Enter your query...">
+        <input type="email" id="contact-email" placeholder="Enter your email...">
+        <button onclick="sendContact()">Send</button>
+    </div>
+
+    <!-- Training Section with Contact Number -->
+    <div class="training section">
+        <h2>Astrology Live Training Sessions</h2>
+        <p>Learn the depths of Vedic astrology with our live training sessions. Dive into comprehensive teachings and enhance your cosmic understanding.</p>
+        <p class="contact-info">Contact +919042502259 for more details.</p>
+    </div>
+
+    <!-- Stars Animation Container -->
+    <div class="stars-animation" id="stars-animation"></div>
+
+    <script>
+        // Chatbot Functionality
+        const chatbot = document.getElementById('chatbot');
+        const chatbotMessages = document.getElementById('chatbot-messages');
+        const chatbotReopen = document.getElementById('chatbot-reopen');
+        let isChatbotActive = false;
+
+        function toggleChatbot() {
+            isChatbotActive = !isChatbotActive;
+            chatbot.classList.toggle('active', isChatbotActive);
+            chatbotReopen.style.display = isChatbotActive ? 'none' : 'block';
+            if (isChatbotActive) {
+                addMessage('Hello! How can I assist you with your cosmic journey today?');
+            }
+        }
+
+        function closeChatbot() {
+            chatbot.classList.remove('active');
+            isChatbotActive = false;
+            chatbotReopen.style.display = 'block';
+        }
+
+        function addMessage(text) {
+            const message = document.createElement('p');
+            message.textContent = text;
+            chatbotMessages.appendChild(message);
+            chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+        }
+
+        function sendMessage() {
+            const input = document.getElementById('chatbot-input').value.trim();
+            if (input) {
+                addMessage(`You: ${input}`);
+                const packageNumber = parseInt(input);
+                if (packageNumber >= 1 && packageNumber <= 4) {
+                    const packages = [
+                        { name: "Soul Purpose Discovery Session", price: "₹1600" },
+                        { name: "Cosmic Clarity Query", price: "₹900" },
+                        { name: "Empowerment Guidance Session", price: "₹3000" },
+                        { name: "Life Path Illumination Report", price: "₹6000" }
+                    ];
+                    const selectedPackage = packages[packageNumber - 1];
+                    addMessage(`Great choice! You've selected the ${selectedPackage.name}. Please proceed with payment of ${selectedPackage.price} to UPI ID lmhss.anandh-1@okaxis.com. Contact +919042502259 for further info.`);
+                } else {
+                    addMessage('I’m here to help! Please provide more details or select a package by typing its number (1-4).');
+                }
+                document.getElementById('chatbot-input').value = '';
+            }
+        }
+
+        // Contact Form Functionality
+        const contactForm = document.getElementById('contact-form');
+
+        function toggleMenu() {
+            contactForm.classList.add('active');
+        }
+
+        function closeContact() {
+            contactForm.classList.remove('active');
+        }
+
+        function sendContact() {
+            const query = document.getElementById('contact-query').value;
+            const email = document.getElementById('contact-email').value;
+            if (query && email) {
+                const mailtoLink = `mailto:lmhss.anandh@gmail.com?subject=Contact Query&body=Query: ${query}%0D%0AEmail: ${email}`;
+                window.location.href = mailtoLink;
+                contactForm.classList.remove('active');
+                alert('Your query has been sent!');
+            } else {
+                alert('Please fill in both fields.');
+            }
+        }
+
+        // Golden Stars Animation
+        const starsContainer = document.getElementById('stars-animation');
+        for (let i = 0; i < 50; i++) {
+            const star = document.createElement('div');
+            star.className = 'star';
+            star.style.left = `${Math.random() * 100}vw`;
+            star.style.animationDelay = `${Math.random() * 20}s`;
+            starsContainer.appendChild(star);
+        }
+        setTimeout(() => {
+            starsContainer.style.display = 'none';
+        }, 20000);
+
+        // Auto-open Chatbot on Load
+        window.onload = function() {
+            toggleChatbot();
+            chatbotReopen.style.display = 'none';
+        };
+    </script>
+</body>
+</html>
