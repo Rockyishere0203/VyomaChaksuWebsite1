@@ -10,15 +10,15 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
         body {
-    margin: 0;
-    padding: 0;
-    font-family: 'Montserrat', sans-serif;
-    background: url('cosmic-eye-bg.jpg') no-repeat center center fixed;
-    background-size: cover;
-    color: #fff;
-    text-align: center;
-    overflow-x: hidden;
-}
+            margin: 0;
+            padding: 0;
+            font-family: 'Montserrat', sans-serif;
+            background: url('cosmic-eye-bg.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: #fff;
+            text-align: center;
+            overflow-x: hidden;
+        }
 
         /* Header Styling */
         .header {
@@ -168,6 +168,33 @@
             border-radius: 20px;
             margin: 10px 0;
         }
+        .training h2 {
+            font-size: 2.5em;
+            font-family: 'Cinzel', serif;
+            border-bottom: 2px solid #ffd700;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+        }
+        .training-package {
+            margin: 20px 0;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+        }
+        .training-package h3 {
+            font-family: 'Cinzel', serif;
+            color: #ffd700;
+            margin-bottom: 10px;
+        }
+        .training-package ul {
+            list-style: none;
+            padding: 0;
+            text-align: left;
+            display: inline-block;
+        }
+        .training-package ul li {
+            margin: 5px 0;
+        }
         .contact-info {
             font-size: 1.2em;
             margin-top: 20px;
@@ -266,11 +293,41 @@
         <button onclick="sendContact()">Send</button>
     </div>
 
-    <!-- Training Section with Contact Number -->
+    <!-- Training Section with Packages -->
     <div class="training section">
         <h2>Astrology Live Training Sessions</h2>
-        <p>Learn the depths of Vedic astrology with our live training sessions. Dive into comprehensive teachings and enhance your cosmic understanding.</p>
-        <p class="contact-info">Contact +919042502259 for more details.</p>
+        <div class="training-package">
+            <h3>🔮 Foundation Astrology Training – Beginner Level</h3>
+            <p><strong>Duration:</strong> 8 Weeks</p>
+            <p><strong>Schedule:</strong> Saturdays & Sundays (2 hours per session)</p>
+            <p><strong>Total Sessions:</strong> 16</p>
+            <p><strong>Fee:</strong> ₹20,000</p>
+            <ul>
+                <li>What is Astrology? – History, ethics, purpose</li>
+                <li>Core foundations – Planets, signs, houses, aspects</li>
+                <li>Understanding your own chart</li>
+                <li>Hands-on chart analysis</li>
+                <li>Live practice with sample charts</li>
+                <li>Individual doubt-clearing support</li>
+            </ul>
+            <p><em>Ideal for seekers, beginners, and those who want to start decoding charts meaningfully.</em></p>
+        </div>
+        <div class="training-package">
+            <h3>🌠 Advanced Astrology Training – Intermediate Level</h3>
+            <p><strong>Duration:</strong> 10 Weeks (Includes the above 8 weeks + 2 weeks of advanced content)</p>
+            <p><strong>Schedule:</strong> Saturdays & Sundays (2 hours per session)</p>
+            <p><strong>Total Sessions:</strong> 20</p>
+            <p><strong>Fee:</strong> ₹26,000</p>
+            <ul>
+                <li>Includes Everything in Foundation, plus:</li>
+                <li>Deep-dive into divisional charts (D9, D10, etc.)</li>
+                <li>Advanced predictive techniques</li>
+                <li>Planetary transits & dasha interpretation</li>
+                <li>Case studies and live chart decoding</li>
+                <li>Guidance on offering astrology readings to others</li>
+            </ul>
+        </div>
+        <p class="contact-info">Contact +919042502259 for more details or to enroll.</p>
     </div>
 
     <!-- Stars Animation Container -->
